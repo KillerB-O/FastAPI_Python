@@ -4,7 +4,8 @@ from.database import engine,SessionLocal
 from sqlalchemy.orm import Session
 
 
-model.database.Base.metadata.create_all(bind=engine)       #importing the database engine 
+model.database.Base.metadata.create_all(bind=engine)       #importing All database model from model package
+
 
 app=FastAPI()
 
