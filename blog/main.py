@@ -60,4 +60,23 @@ def show(id,response:Response,db:Session=Depends(get_db)):
     
     return blog   
 
+@app.post('/user',status_code=status.HTTP_201_CREATED)
+def create_user(request:schema.User,db:Session=Depends(get_db)):
+    new_user=model.User(name=request.name,Email=request.Email,password=request.password)
+    db.add(new_user)
+    db.commit()
+    db.refresh(new_user)
+    return new_user
+
+@app.get('/user',response_model=list[schema.Showuser],status_code=status.HTTP_200_OK)
+def display_user(response:Response,db:Session=Depends(get_db)):
+   User_data=db.query(model.User).all()
+   return User_data
+
+
+@app.get('/user/{id}',response_model=schema.Showuser,status_code=status.HTTP_200_OK)
+def display_user(id,response:Response,db:Session=Depends(get_db)):
+   User_data=db.query(model.User).filter(model.User.id==id).first()
+   return User_data
+
 
