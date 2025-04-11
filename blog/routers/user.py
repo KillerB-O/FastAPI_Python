@@ -20,4 +20,4 @@ def display_user(response:Response,db:Session=Depends(get_db)):
 
 @router.get('/{id}',response_model=schema.Showuser,status_code=status.HTTP_200_OK)
 def display_user(id,response:Response,db:Session=Depends(get_db)):
-  return user.get_id(id,response,db)
+  return user.get_id(id,db)

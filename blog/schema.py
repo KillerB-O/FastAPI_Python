@@ -24,3 +24,7 @@ class ShowBlog(BaseModel):        #Responce Schema[schema is for request model]
     
     class Config():
         orm_mode=True
+
+class login(BaseModel):
+    username:str
+    password:str        

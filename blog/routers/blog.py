@@ -28,4 +28,4 @@ def update(id,request:schema.Blog,db:Session=Depends(get_db)):
 
 @router.get('/{id}',response_model=schema.ShowBlog,status_code=status.HTTP_200_OK,)
 def show(id,response:Response,db:Session=Depends(get_db)):
-    return blog.Show_Id
+    return blog.Show_Id(id,db)
